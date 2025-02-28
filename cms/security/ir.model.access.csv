@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_award_type,award.type,cms_award_type,base.group_user,1,1,1,1
+access_contract_type,contract.type,cms_contract_type,base.group_user,1,1,1,1
+

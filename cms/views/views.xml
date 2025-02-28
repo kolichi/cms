@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_project_form_inherit" model="ir.ui.view">
+		<field name="name">project.form.inherit</field>
+		<field name="model">project.project</field>
+		<field name="inherit_id" ref="project.edit_project" />
+		<field name="arch" type="xml">
+			<notebook position="inside">
+				<page name="extension" string="Extension">
+					<group>
+						<group>
+							<!-- <field name="extension" />
+							<field name="vendor_contact" />
+							<field name="company_representative_id" /> -->
+						</group>
+						<group>
+							<!-- <field name="start_date" />
+							<field name="end_date" />
+							<field name="renewal_date" />
+							<field name="termination_date" /> -->
+						</group>
+					</group>
+				</page>
+				<page name="payment" string="Payment">
+					<group>
+						<!-- <field name="payment" />
+						<field name="penalty_clauses" /> -->
+					</group>
+				</page>
+				<page name="legal" string="Related Contracts">
+					<group>
+
+					</group>
+				</page>
+				<!-- <page name="status" string="Status">
+					<group>
+						<field name="status" />
+						<field name="approval_status" />
+						<field name="signed_date" />
+						<field name="signed_by" />
+					</group>
+				</page> -->
+				<!-- <page name="mgt" string="Management and oversight">
+					<group>
+						<field name="performance_metrics" />
+						<field name="risk_assessment" />
+					</group>
+				</page> -->
+			</notebook>
+			<xpath expr="//form//header" position="inside">
+					<div class="oe_button_box" name="button_box">
+						<button 
+							class="oe_stat_button" 
+							icon="fa-check-circle" 
+							type="object" 
+							name="action_open_approvals"
+							string="Approvals"
+						>
+							<field name="approval_count" widget="statinfo" string="Approvals"/>
+						</button>
+					</div>
+				</xpath>
+			<xpath expr="//sheet//field[@name='label_tasks']" position="before">
+					<field name="contract_id" />
+					<field name="contract_title" />
+					<field name="department_id" />
+					<field name="contract_value" />
+					<field name="currency_id" />
+					<field name="contract_type"  widget="many2one"/>
+			</xpath>
+				<xpath expr="//sheet//field[@name='label_tasks']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//sheet//field[@name='company_id']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//sheet//field[@name='partner_id']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//sheet//field[@name='user_id']" position="attributes">
+				<attribute name="string">Contract Manager</attribute>
+			</xpath>
+			<xpath expr="//sheet//field[@name='user_id']" position="after">
+					<field name="signing_date" />
+					<field name="vendor_name" />  
+					<field name="award_type" widget="many2one_avatar_user" />  
+			</xpath>
+			<group>
+			</group>
+		</field>
+	</record>
+	<record id="project.menu_main_pm" model="ir.ui.menu">
+		<field name="name">
+			Contracts
+		</field>
+	</record>
+</odoo>
